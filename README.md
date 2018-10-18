@@ -1,3 +1,3 @@
 # geekbrains_django
 
-#Домашнее задание к курсу Geekbrains "Django"
+Домашнее задание к курсу Geekbrains "Django"
