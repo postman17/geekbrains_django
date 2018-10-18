@@ -5,3 +5,4 @@ server/mainapp/__pycache__
 server/mainapp/migrations/__pycache__
 server/server/__pycache__
 server/__pycache__
+db.sqlite3
