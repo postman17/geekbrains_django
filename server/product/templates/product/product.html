@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "main.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/product/css/product.css">
+    <title>Товары</title>
+{% endblock %}
+
+{% block content %}
+    <div class="list-pro">
+        <ul class="list-product">
+        {% for item in products %}
+        <li class="list-product-li"><a href="detail/{{ item.name }}/{{ item.content }}">{{ item.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

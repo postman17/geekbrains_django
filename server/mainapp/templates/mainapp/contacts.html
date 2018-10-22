@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/mainapp/css/contacts.css">
+{% extends "main.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="static/mainapp/css/index.css">
     <title>Контакты</title>
-</head>
-<body>
-    <div class="menu">
-        <ul class="ul-menu">
-            <li><a href="/">Главная</a></li>
-            <li><a href="about">О проекте</a></li>
-            <li><a href="contacts">Контакты</a></li>
-        </ul>
-    </div>
-    <div class="contacts">
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, perspiciatis ut! A aliquid architecto
-            autem laborum quod ratione repudiandae rerum similique veritatis voluptatibus! Cumque est impedit iusto
-            maxime quaerat vitae.
-        </div>
-    </div>
-</body>
-</html>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li>Contact 1</li>
+    </ul>
+{% endblock %}

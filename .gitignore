@@ -1,6 +1,8 @@
 
 .idea
 venv
+server/product/__pycache__
+server/product/migrations/__pycache__
 server/mainapp/__pycache__
 server/mainapp/migrations/__pycache__
 server/server/__pycache__
