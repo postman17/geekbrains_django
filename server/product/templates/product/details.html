@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/product/css/detail.css">
+    <title>Описание товара</title>
+{% endblock %}
+
+{% block content %}
+    <div class="list-details">
+        <h2>{{ name }}</h2>
+        <p>
+            {{ content }}
+        </p>
+    </div>
+{% endblock %}

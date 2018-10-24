@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/mainapp/css/about.css">
+{% extends "main.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="static/mainapp/css/index.css">
     <title>О проекте</title>
-</head>
-<body>
-    <div class="menu">
-        <ul class="ul-menu">
-            <li><a href="/">Главная</a></li>
-            <li><a href="about">О проекте</a></li>
-            <li><a href="contacts">Контакты</a></li>
-        </ul>
-    </div>
+{% endblock %}
+
+{% block content %}
     <div class="about">
+        <h2>{{ about|title }}</h2>
         <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ea est facere ipsam magnam nam
             necessitatibus nisi obcaecati pariatur placeat, quaerat reprehenderit saepe sunt temporibus ullam, velit
             voluptates? Culpa, odit!
@@ -57,22 +51,5 @@
             voluptate. Assumenda, dolore eaque explicabo fugit harum ipsum laborum nostrum sint sit suscipit! Assumenda,
             dolores quia.
         </div>
-        <div>Adipisci assumenda beatae consequatur dolorem dolores eligendi, exercitationem fuga ipsum laborum magnam
-            minima minus molestiae necessitatibus non nostrum soluta vitae voluptatum! Deserunt facilis in ipsum
-            molestiae obcaecati qui rerum, temporibus!
-        </div>
-        <div>Doloremque neque nobis officiis! Accusamus aspernatur dolor eum, harum incidunt iste minima modi
-            necessitatibus nisi perspiciatis placeat quaerat qui sequi sint, velit, vitae voluptas! Culpa et provident
-            sint. Eos, voluptatibus.
-        </div>
-        <div>Accusantium atque fugiat illo iste vitae. Accusantium ad architecto assumenda atque cupiditate deleniti
-            ducimus exercitationem id in nam non, odit pariatur porro quas qui, quibusdam quisquam repellat sunt, vel
-            velit.
-        </div>
-        <div>Adipisci, corporis hic impedit labore odio placeat possimus quidem ratione unde velit! A labore, mollitia
-            nesciunt nihil recusandae repellat? Ab dolorum eius explicabo facilis illo nostrum omnis quaerat ratione
-            repudiandae.
-        </div>
     </div>
-</body>
-</html>
+{% endblock %}
