@@ -8,10 +8,10 @@
 <body>
     <div class="menu">
         <ul class="ul-menu">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about">О проекте</a></li>
-            <li><a href="/contacts">Контакты</a></li>
-            <li><a href="/product">Товары</a></li>
+            <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
+            <li><a href="{% url 'mainapp:about' %}">О проекте</a></li>
+            <li><a href="{% url 'mainapp:contacts' %}">Контакты</a></li>
+            <li><a href="{% url 'product:index' %}">Товары</a></li>
         </ul>
     </div>
     <div class="text-block">

@@ -1,7 +1,9 @@
 {% extends "main.html" %}
 
+{% load static %}
+
 {% block head %}
-    <link rel="stylesheet" href="/static/product/css/product.css">
+    <link rel="stylesheet" href="{% static 'product/css/product.css' %}">
     <title>Товары</title>
 {% endblock %}
 
@@ -9,7 +11,7 @@
     <div class="list-pro">
         <ul class="list-product">
         {% for item in products %}
-        <li class="list-product-li"><a href="detail/{{ item.name }}/{{ item.content }}">{{ item.name }}</a></li>
+        <li class="list-product-li"><a href="{% url 'product:detail' product_name=item.title product_content=item.snippet %}">{{ item.title }}</a></li>
         {% endfor %}
         </ul>
     </div>
