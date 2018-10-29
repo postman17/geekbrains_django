@@ -8,10 +8,13 @@
 {% endblock %}
 
 {% block content %}
+    <div class="add-product">
+        <a class="add-a" href="{% url 'product:add' %}">Добавление товара.</a>
+    </div>
     <div class="list-pro">
         <ul class="list-product">
         {% for item in products %}
-        <li class="list-product-li"><a href="{% url 'product:detail' product_name=item.title product_content=item.snippet %}">{{ item.title }}</a></li>
+        <li class="list-product-li"><a href="{% url 'product:detail' product_name=item.title product_content=item.snippet product_image=item.image %}">{{ item.title }}</a></li>
         {% endfor %}
         </ul>
     </div>
