@@ -10,8 +10,23 @@
 {% block content %}
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="text">
-        <input type="password">
+
+        {% for err in form.not_field_errors %}
+        <div class="alert-not_field">
+            <span>{{ err }}</span>
+        </div>
+        {% endfor %}
+
+        {% for field in form %}
+        <div class="field-group">
+            {{ field }}
+            {% for err in field.errors %}
+            <small>{{ err }}</small>
+            {% endfor %}
+        </div>
+        {% endfor %}
         <input type="submit">
     </form>
 {% endblock %}
+
+
