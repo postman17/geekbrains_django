@@ -1,0 +1,19 @@
+.ul-menu {
+    list-style-type: none;
+    border: 1px solid #000;
+}
+
+.ul-menu li {
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+}
+
+.ul-menu a {
+    text-decoration: none;
+}
+
+.text-block {
+    border: 1px solid #000;
+    padding: 10px 10px 10px 10px;
+}

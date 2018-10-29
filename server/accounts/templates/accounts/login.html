@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/accounts/css/login.css' %}">
+    <title>Вход в систему.</title>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text">
+        <input type="password">
+        <input type="submit">
+    </form>
+{% endblock %}
