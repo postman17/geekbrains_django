@@ -18,3 +18,10 @@
     padding: 10px 10px 10px 10px;
 }
 
+.edit-product {
+    color: green;
+}
+
+.delete-product {
+    color: red;
+}
