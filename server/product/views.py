@@ -17,11 +17,12 @@ def view_products(request):
     return render(request, 'product/product.html', {'products': products})
 
 
-def details(request, product_name, product_content, product_image):
+def details(request, pk):
+    obj = get_object_or_404(Product, pk=pk)
     context = {
-        'name': product_name,
-        'content': product_content,
-        'image': product_image
+        'name': obj.title,
+        'content': obj.snippet,
+        'image': obj.image
     }
     return render(request, 'product/details.html', context)
 
@@ -75,3 +76,21 @@ def delete_product(request, pk):
         obj.delete()
         return redirect(success_url)
     return render(request, 'product/delete.html', {'obj': obj})
+
+
+def category_list(request):
+    query = get_list_or_404(Category)
+    page = request.GET.get('page')
+    paginator = Paginator(query, 3)
+    categories = paginator.get_page(page)
+    return render(request, 'categories/list.html', {'categories': categories})
+
+
+def category_detail(request, pk):
+    obj = get_object_or_404(Category, pk=pk)
+    page = request.GET.get('page')
+    paginator = Paginator(obj.product_set.all(), 3)
+    results = paginator.get_page(page)
+    return render(request, 'categories/detail.html', {
+        'object': obj,
+        'results': results})

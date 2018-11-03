@@ -33,7 +33,7 @@
         </ul>
         <ul class="list-product">
         {% for item in products %}
-        <li class="list-product-li"><a href="{% url 'product:detail' product_name=item.title product_content=item.snippet product_image=item.image %}">{{ item.title }}</a>
+        <li class="list-product-li"><a href="{% url 'product:detail' pk=item.pk %}">{{ item.title }}</a>
             <a class="edit-product" href="{% url 'product:update' pk=item.pk %}">Редактировать товар.</a>
             <a class="delete-product" href="{% url 'product:delete' pk=item.pk %}">Удадить товар.</a>
         </li>
