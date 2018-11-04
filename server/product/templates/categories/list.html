@@ -18,20 +18,20 @@
     </style>
     <div class="list-pro">
         <ul class="paginator">
-            {% if categories.has_previous %}
-            <li><a href="?page={{ categories.previous_page_number }}">Previous</a></li>
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
             {% endif %}
-            {% for num in categories.paginator.page_range %}
+            {% for num in page_obj.paginator.page_range %}
             <li><a href="?page={{ num }}">{{ num }}</a></li>
             {% endfor %}
-            {% if categories.has_next %}
+            {% if page_obj.has_next %}
             <li><a href="?page={{ categories.next_page_number }}">Next</a></li>
             {% endif %}
         </ul>
         <ul class="list-product">
         {% for item in categories %}
         <li class="list-product-li">
-            <a href="{% url 'product:detail' pk=item.pk %}">{{ item }}</a>
+            <a href="{% url 'product:category_detail' pk=item.pk %}">{{ item }}</a>
         </li>
         {% endfor %}
         </ul>
