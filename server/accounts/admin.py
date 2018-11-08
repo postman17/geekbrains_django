@@ -1,5 +1,16 @@
 from django.contrib import admin
-from accounts.models import AccountUser
-# Register your models here.
+from .models import AccountUser
+from django.contrib.auth.admin import UserAdmin
 
-admin.site.register(AccountUser)
+
+class AccountUserAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            'Extra', {
+                'fields': ('avatar', 'phone')
+            }
+        ),
+    )
+
+
+admin.site.register(AccountUser, AccountUserAdmin)

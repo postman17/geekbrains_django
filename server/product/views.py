@@ -8,6 +8,8 @@ from django.views.generic import (
     CreateView, UpdateView, DeleteView,
     ListView, DetailView
 )
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from accounts.mixins import AdminRoleRequired
 
 
 class ProductJsonListView(ListView):
@@ -53,7 +55,7 @@ class ProductJsonListView(ListView):
         return JsonResponse(context)
 
 
-class ProductCreate(CreateView):
+class ProductCreate(LoginRequiredMixin, AdminRoleRequired, CreateView):
     model = Product
     fields = [
         'title', 'category', 'image',
@@ -61,9 +63,10 @@ class ProductCreate(CreateView):
     ]
     template_name = 'product/add.html'
     success_url = reverse_lazy('product:index')
+    login_url = reverse_lazy('accounts:login')
 
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(LoginRequiredMixin, AdminRoleRequired, UpdateView):
     model = Product
     fields = [
         'title', 'category', 'image',
@@ -71,13 +74,17 @@ class ProductUpdate(UpdateView):
     ]
     template_name = 'product/add.html'
     success_url = reverse_lazy('product:index')
+    login_url = reverse_lazy('accounts:login')
 
 
-class ProductDelete(DeleteView):
+class ProductDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     template_name = 'product/add.html'
     success_url = reverse_lazy('product:index')
+    login_url = reverse_lazy('accounts:login')
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
 class ProductList(ListView):
     model = Product
@@ -132,7 +139,7 @@ class CategoryDetail(DetailView):
 #     }
 #     return render(request, 'product/details.html', context)
 
-
+#
 # def add_product(request):
 #     success_url = reverse_lazy('product:index')
 #     form = AddProduct()
