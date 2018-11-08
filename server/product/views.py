@@ -1,12 +1,56 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+# from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from .models import Category, Product
-from .forms import AddProduct
-from django.urls import reverse_lazy
+#from .forms import AddProduct
+from django.http import JsonResponse
+from django.urls import reverse_lazy, reverse
 from django.core.paginator import Paginator
 from django.views.generic import (
     CreateView, UpdateView, DeleteView,
     ListView, DetailView
 )
+
+
+class ProductJsonListView(ListView):
+    model = Product
+    paginate_by = 10
+
+    def serialize_object_list(self, queryset):
+        return list(
+            map(
+                lambda itm: {
+                    'id': itm.id,
+                    'title': itm.title,
+                    'category': str(itm.category) if itm.category else None,
+                    'image': itm.image.url,
+                    'cost': itm.cost,
+                },
+                queryset
+            )
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductJsonListView, self).get_context_data(**kwargs)
+
+        data = {}
+        page = context.get('page_obj')
+        route_url = reverse('rest_products:list')
+
+        data['next_url'] = None
+        data['previous_url'] = None
+        data['page'] = page.number
+        data['count'] = page.paginator.count
+        data['results'] = self.serialize_object_list(page.object_list)
+
+        if page.has_next():
+            data['next_url'] = f'{route_url}?page={page.next_page_number()}'
+
+        if page.has_previous():
+            data['previous_url'] = f'{route_url}?page={page.previous_page_number()}'
+
+        return data
+
+    def render_to_response(self, context, **response_kwargs):
+        return JsonResponse(context)
 
 
 class ProductCreate(CreateView):
@@ -39,7 +83,7 @@ class ProductList(ListView):
     model = Product
     template_name = 'product/product.html'
     context_object_name = 'products'
-    paginate_by = 10
+    paginate_by = 3
 
 
 class ProductDetail(DetailView):

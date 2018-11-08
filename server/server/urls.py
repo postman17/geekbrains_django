@@ -18,7 +18,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+router = [
+    path('product/', include('product.routes')),
+]
+
 urlpatterns = [
+    path('api/', include(router)),
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
     path('product/', include('product.urls')),
