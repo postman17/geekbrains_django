@@ -9,6 +9,6 @@
 
 {% block content %}
     <div class="list-details">
-        {% include 'product/components/item.html' with name_include=name content_include=content image_include=image %}
+        {% include 'product/components/item.html' with name_include=object.title content_include=object.snippet image_include=object.image %}
     </div>
 {% endblock %}

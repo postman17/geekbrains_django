@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Category
-from .models import Product
+from .models import Product, Category
 
 
 # class AddProduct(forms.Form):
@@ -26,3 +26,8 @@ class AddProduct(ModelForm):
             'title', 'category', 'image',
             'snippet', 'cost'
         ]
+
+class CategoryForm(ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title', 'snippet']
